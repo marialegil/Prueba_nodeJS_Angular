@@ -1,0 +1,124 @@
+ <!doctype html>
+<html ng-app="MyfirstApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css"  type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/bootstrap.min.css"  type="text/css">
+        <link href="./css/mdb.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+         <script src="./js/jquery-2.1.4.min.js"></script>
+        <script src="./Chart.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./collect.js"></script>
+        <script src="./angular.min.js"></script>
+        <script src="controlleeer.js"></script>
+        <script src="./js/chart.min.js"></script>
+        <script src="./moment.min.js"></script>
+
+    </head>
+    <style type="text/css">
+        
+   
+    </style>
+    <body ng-controller="FirstController">
+        <title>Agence Interativa</title><nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Barra de Navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><i class="fa fa-home"></i> Agence</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#"><i class="fa fa-suitcase"></i> Projetos</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-pencil-square-o"></i> Administrativo</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-users"></i> Comercial</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-area-chart"></i> Financiero</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user"></i> Usuario </a>
+                        </li>
+
+                    </ul>
+                   
+                </div>
+            </div>
+        </nav>
+        
+         <div class="container">
+             <label>Consultores <i class="fa fa-users"></i></label>
+             <ul ng-repeat="consultor in consultores">
+                <input type="checkbox" ng-model="consultoresSelec" ng-value="consultor.co_usuario" ng-click="cambiar(consultor.co_usuario)">  {{consultor.no_usuario}}
+            </ul>
+        </div>
+
+     <div class="container">
+        <b>Seleccione Periodo:</b><br>
+         
+     <select class="btn btn-outline-primary btn-rounded waves-effect" ng-model="desde_mes" ng-options="mes.id as mes.name for mes in meses"></select>
+    <select class="btn btn-outline-primary btn-rounded waves-effect" ng-model="desde_ano" ng-options="ano for ano in anos"></select>
+    <select class="btn btn-outline-primary btn-rounded waves-effect"  ng-model="hasta_mes" ng-options="mes.id as mes.name for mes in meses"></select>
+  <select class="btn btn-outline-primary btn-rounded waves-effect" ng-model="hasta_ano" ng-options="ano for ano in anos"></select>
+
+
+            <button ng-click="relatorio();" class="btn btn-primary"><i class="fa fa-th"></i> Relatorio</button>  
+            <button ng-click="mostrar_bar()" class="btn btn-default"><i class="fa fa-th"></i> Graficos</button>
+            <button ng-click="pizza()" class="btn btn-warning"><i class="fa fa-th"></i> Torta</button>
+
+            <canvas id="canvas" class="chart chart-bar" chart-data="datos" chart-labels="etiquetas" chart-series="series"></canvas>
+
+
+
+            <table ng-repeat="consultoress in relatorioData" class="table table-bordered table-danger">
+             <thead>
+                <tr>
+                <th colspan="5">{{consultoress.items[0].no_usuario}}<i class="fa fa-user"></i></th>
+                </tr>
+                <tr>          
+                    <th><b>Periodo</b></th>
+                    <th><b>Receita Líquida</b></th>
+                    <th><b>Custo Fixo</b></th>
+                    <th><b>Comissão</b></th>
+                    <th><b>Lucro</b></th>
+                </tr>
+                </thead>
+            <tbody>
+
+                <tr ng-repeat="mes in consultoress.items">
+                    <td>{{nom_meses[mes.mes]}}-{{mes.year}}</td>        
+                    <td>{{mes.receita_liquida}}</td>      
+                    <td>{{mes.custo_fixo}}</td>        
+                    <td>{{mes.comissao}}</td>        
+                    <td>{{mes.lucro}}</td>
+                </tr>
+                <tr>
+                    <th><b>Total</b></th>        
+                    <td><b>{{relatorioData_tot[consultoress.items[0].no_usuario].items[0].tot_rec_liq}}</td>      
+                    <td><b>{{relatorioData_tot[consultoress.items[0].no_usuario].items[0].tot_custo_fixo}}</td>  
+                     <td><b>{{relatorioData_tot[consultoress.items[0].no_usuario].items[0].tot_comissao}}</td>        
+                    <td><b>{{relatorioData_tot[consultoress.items[0].no_usuario].items[0].tot_lucro}}</td>
+                    
+
+
+                </tr>
+            </tbody>
+        </table>
+                    
+       
+    </body>
+</html>
