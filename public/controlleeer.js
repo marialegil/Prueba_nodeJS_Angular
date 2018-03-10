@@ -58,7 +58,7 @@ $scope.custo_fixo_p={
 	},
 	 function errorCallback(error){
 		console.log(error)
-		$scope.toast('Error al conectarse con el servidor, intentelo mas tarde');
+		// $scope.toast('Error al conectarse con el servidor, intentelo mas tarde');
 	});
 
 	$scope.relatorio=function(){
