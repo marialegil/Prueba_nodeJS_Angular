@@ -3,6 +3,8 @@ var app=express();
 var body_parser=require("body-parser")
 var model=require("./model");
 
+app.set('port', (process.env.PORT || 3000))
+
 
 app.use(express.static(__dirname + '/public'));
 
@@ -32,10 +34,11 @@ model.boton_relatorio(req, res, next);
 
 
 
+app.listen(app.get('port'));
 
 
 
-app.listen(4000);
+//app.listen(4000);
 
 
 
