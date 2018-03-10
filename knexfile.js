@@ -1,0 +1,1 @@
+HEROKU_POSTGRESQL_PUCE_URL: postgres://alhbydtjqcrlto:cbd3d94c6582119ac343e9644c7723fe669a84653052fe0f7d18b524374daea2@ec2-54-221-220-59.compute-1.amazonaws.com:5432/d4ghjsmabddf5b
