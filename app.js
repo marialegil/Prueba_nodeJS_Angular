@@ -34,7 +34,9 @@ model.boton_relatorio(req, res, next);
 
 
 
-app.listen(app.get('port'));
+app.listen(app.get('port'),function(){
+  console.log('listening in port '+app.get('port'));
+});
 
 
 
