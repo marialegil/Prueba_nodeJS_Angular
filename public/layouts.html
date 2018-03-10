@@ -68,7 +68,7 @@
         </div>
 
      <div class="container">
-        <b>Seleccione Periodo:</b><br>
+        <b>Seleccione Periodo:</b>
          
      <select class="btn btn-outline-primary btn-rounded waves-effect" ng-model="desde_mes" ng-options="mes.id as mes.name for mes in meses"></select>
     <select class="btn btn-outline-primary btn-rounded waves-effect" ng-model="desde_ano" ng-options="ano for ano in anos"></select>
@@ -80,7 +80,9 @@
             <button ng-click="mostrar_bar()" class="btn btn-default"><i class="fa fa-th"></i> Graficos</button>
             <button ng-click="pizza()" class="btn btn-warning"><i class="fa fa-th"></i> Torta</button>
 
-            <canvas id="canvas" class="chart chart-bar" chart-data="datos" chart-labels="etiquetas" chart-series="series"></canvas>
+            <canvas id="canvas_pie" width="150%" height="40px"></canvas>
+             <canvas id="canvas_bar" width="180%" height="50px"></canvas>
+
 
 
 

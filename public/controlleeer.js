@@ -131,7 +131,11 @@ $scope.custo_fixo_p={
 
 		function barra(barChartData) {
 			//console.log(barChartData);
-			var ctx = document.getElementById('canvas').getContext('2d');
+			if(window.myBar!=undefined){
+
+				window.myBar.destroy();
+			}
+			var ctx = document.getElementById('canvas_bar').getContext('2d');
 			window.myBar = new Chart(ctx, {
 				type: 'bar',
 				data: barChartData,
@@ -163,18 +167,7 @@ $scope.custo_fixo_p={
 	 			//console.log(group_meses);
 	 			
 	 			var opc_grafico={
-	 				 data:{},
-	 				type: 'bar',
-					options: {
-						responsive: true,
-						legend: {
-							position: 'top',
-						},
-						title: {
-							display: true,
-							text: 'Chart.js Bar Chart'
-						}
-					}
+	 				 data:{}
 	 			}
 	 			var fc_desd=moment().month($scope.desde_mes).year($scope.desde_ano);
 				var fc_hasta=moment().month($scope.hasta_mes).year($scope.hasta_ano);
@@ -234,6 +227,8 @@ $scope.custo_fixo_p={
 
 				$scope.pizza=pizza;
 				function pizza(){
+				var ctx = document.getElementById('canvas_pie');
+				ctx.width=ctx.width;
 				$http.post("/relatorio",{
 	 		desde_ano: $scope.desde_ano,
 		 	desde_mes: $scope.desde_mes,
@@ -264,12 +259,7 @@ $scope.custo_fixo_p={
 	 				colors.push(getRandomColor());
 	 				return (consultor.tot_rec_liq*100)/tot_recl;
 
-	 			})
-
-
-
-	 	//console.log(porc_rec_liq);
-	 	
+	 			})	 	
 
 	 	var config = {
 			type: 'pie',
@@ -290,8 +280,12 @@ $scope.custo_fixo_p={
 			}
 		};
 
-		var ctx = document.getElementById('canvas').getContext('2d');
-		window.myPie = new Chart(ctx, config);
+		var ctx = document.getElementById('canvas_pie').getContext('2d');
+			if(window.myPie!=undefined){
+
+				window.myPie.destroy();
+			}
+			window.myPie = new Chart(ctx, config);
 
 
 	 	})
