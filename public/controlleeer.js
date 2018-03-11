@@ -176,7 +176,7 @@ $scope.custo_fixo_p={
 	 			opc_grafico.labels=$scope.rango(dif,$scope.desde_mes).map(function(val){
 	 				 		return $scope.meses[val].name;
 	 			});
-	 				 			console.log(group_meses);
+	 				 			//console.log(group_meses);
 
 	 			var custo_fixo_tot=0;
 
@@ -200,7 +200,7 @@ $scope.custo_fixo_p={
 					}
 	 			});
 	 			opc_grafico.datasets.push($scope.custo_fixo_p);
-	 			console.log(opc_grafico);				 			
+	 			//console.log(opc_grafico);				 			
 	 			barra(opc_grafico);
 	 		})
 		};
@@ -244,7 +244,7 @@ $scope.custo_fixo_p={
 	 		//console.log(val);
 
 	 		var consultor=totales.items[val].items[0];
-	 		console.log(acum, consultor.tot_rec_liq);
+	 		//console.log(acum, consultor.tot_rec_liq);
 	 		return acum+consultor.tot_rec_liq;
 
 
